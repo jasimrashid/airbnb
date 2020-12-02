@@ -4,34 +4,34 @@
 
 <h2>Prediction Time</h2>
 
-<p>Use the form below to predict if a kickstarter proposal will meet its funding goal</p>
+<p>Use the form below to predict which user is more likely to say a given tweet...</p>
 
-<form action="/predict_form" method="POST">
+<form action="/predict" method="POST">
 
-    <label>Category</label>
-    <select name="category">
-        <option value="Software" selected="true">software</option>
-        <option value="Art">art</option>
-        <option value="Cooking">cooking</option>
-        <option value="Electronics">electronics</option>
+    <!-- TODO: Instead of hard-coding these drop-down menu options, dynamically populate them based on user records from the database -->
+    <label>Twitter User A:</label>
+    <select name="screen_name_a">
+        <option value="elonmusk" selected="true">@elonmusk</option>
+        <option value="justinbieber">@justinbieber</option>
+        <option value="s2t2">@s2t2</option>
     </select>
     <br>
 
-    <label>Summary of pitch:</label>
-    <input type="text" name="pitch" placeholder="i am the goose that lays golden eggs. fund me bro!"
-        value="i am the goose that lays golden eggs. fund me bro!">
+    <!-- TODO: Instead of hard-coding these drop-down menu options, dynamically populate them based on user records from the database -->
+    <label>Twitter User B:</label>
+    <select name="screen_name_b">
+        <option value="elonmusk">@elonmusk</option>
+        <option value="justinbieber" selected="true">@justinbieber</option>
+        <option value="s2t2">@s2t2</option>
+    </select>
     <br>
 
-    <label for="a">a (between 0 and 10):</label>
-    <input type="range" id="a" name="a" min="0" max="10">
-    <br>
-
-    <label for="b">b (between 0 and 100):</label>
-    <input type="range" id="b" name="b" min="0" max="100">
+    <label>Tweet Text:</label>
+    <input type="text" name="tweet_text" placeholder="Tesla Model S production facility is great"
+        value="Tesla Model S production facility is great">
     <br>
 
     <button>Submit</button>
-
 </form>
 
 {% endblock %}

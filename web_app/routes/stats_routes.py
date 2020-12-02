@@ -14,67 +14,49 @@ stats_routes = Blueprint("stats_routes", __name__)
 
 # LOAD SERIALIZED MODEL
 
+# def load_model():
+#     print("LOADING THE MODEL...")
+#     with open(MODEL_FILEPATH, "rb") as model_file:
+#         saved_model = pickle.load(model_file)
+#     return saved_model
 
-def load_model():
-    print("LOADING THE MODEL...")
-    with open(MODEL_FILEPATH, "rb") as model_file:
-        saved_model = pickle.load(model_file)
-    return saved_model
-
-
-@stats_routes.route("/predict", methods=["GET"])
-def predict_json():
-    lr = load_model()
-    print("CLASSIFIER:", lr)
-    print('Model loaded')
-
-    # try:
-    #     json_ = request.json
-    #     print(json_)
-
-    #     query = pd.DataFrame(json_)
-    #     query = query[['a', 'b']]
-
-    #     prediction = list(lr.predict(query))
-
-    #     return jsonify({'prediction': str(prediction)})
-
-    # except:
-
-    #     return jsonify({'trace': traceback.format_exc()})
-
+# retired: route from build week
+# @stats_routes.route("/predict", methods=["GET"])
+# def predict_json():
 
 # ROUTE FOR RUNNING APP THROUGH BROWSWER REQUEST
-@stats_routes.route("/predict_form", methods=["POST"])
-def predict_html():
+# @stats_routes.route("/predict_form", methods=["POST"])
+# def predict_html():
+
+
+@stats_routes.route("/predict", methods=["POST"])
+def predict():
     print("PREDICT ROUTE...")
+    print("FORM DATA:", dict(request.form))
     # > {'screen_name_a': 'elonmusk', 'screen_name_b': 's2t2', 'tweet_text': 'Example tweet text here'}
-    # print("FORM DATA:", dict(request.form))
-    # # breakpoint()
-    # category = request.form["category"]
-    # pitch = request.form["pitch"]
-    # a_ = int(request.form["a"])
-    # b_ = int(request.form["b"])
+    screen_name_a = request.form["screen_name_a"]
+    screen_name_b = request.form["screen_name_b"]
+    tweet_text = request.form["tweet_text"]
 
-    # # breakpoint()
+    print("-----------------")
+    print("FETCHING TWEETS FROM THE DATABASE...")
 
-    # # FOR TESTING PURPOSES ONLY - THE MODEL ONLY USES X AND Y FROM THE FORM
-    # clf = load_model()
-    # print("CLASSIFIER:", clf)
-    # inputs = [[a_, b_]]
-    # print(type(inputs), inputs)
-    # result = clf.predict(inputs)
-    # print("RESULT:", result)
-    # print("-----------------")
-    # print("*********** MAKING A PREDICTION...")
+    # TODO
 
-    # # breakpoint()
+    print("-----------------")
+    print("TRAINING THE MODEL...")
 
-    # return jsonify({
-    #     "message": "BOOK CREATED OK",
-    #     "all features": dict(request.form),
-    #     "feature used by model a": a_,
-    #     "feature used by model b": b_,
-    #     "predicted outcome: ": int(result[0])
+    classifier = LogisticRegression()
+    # TODO: classifier.fit(___________, ___________)
 
-    # })
+    print("-----------------")
+    print("MAKING A PREDICTION...")
+
+    # TODO
+
+    return render_template("prediction_results.html",
+                           screen_name_a=screen_name_a,
+                           screen_name_b=screen_name_b,
+                           tweet_text=tweet_text,
+                           screen_name_most_likely="TODO"
+                           )
