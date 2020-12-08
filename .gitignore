@@ -5,3 +5,6 @@ migrations/
 
 # ignore secret credentials
 .env
+
+# jasim's scratchpad
+help.txt

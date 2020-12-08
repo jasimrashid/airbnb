@@ -40,6 +40,8 @@ if __name__ == "__main__":
     clf = load_model()
     print("CLASSIFIER:", clf)
 
+    breakpoint()
+
     exit()
 
     # just to have some data to use when predicting

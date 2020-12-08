@@ -4,32 +4,217 @@
 
 <h2>Prediction Time</h2>
 
-<p>Use the form below to predict which user is more likely to say a given tweet...</p>
+<p>Use the form below to predict the price for a given rental</p>
 
 <form action="/predict" method="POST">
 
     <!-- TODO: Instead of hard-coding these drop-down menu options, dynamically populate them based on user records from the database -->
-    <label>Twitter User A:</label>
-    <select name="screen_name_a">
-        <option value="elonmusk" selected="true">@elonmusk</option>
-        <option value="justinbieber">@justinbieber</option>
-        <option value="s2t2">@s2t2</option>
+    <label>Metro Area:</label>
+    <select name="metro_area">
+        <option value="Austin" selected="true">Austin</option>
+        <option value="Boston">Boston</option>
+        <option value="Broward">Broward</option>
+        <option value="Cambridge">Cambridge</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Twin Cities">Twin Cities</option>
+        <option value="Clark CO">Clark CO</option>
+        <option value="Columbus">Columbus</option>
+        <option value="Denver">Denver</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Jersey City">Jersey City</option>
+        <option value="New York City">New York City</option>
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Oakland">Oakland</option>
+        <option value="Nashville">Nashville</option>
+        <option value="New Orleans">New Orleans</option>
+        <option value="Santa Clara">Santa Clara</option>
+        <option value="Portland">Portland</option>
+        <option value="Rhode Island">Rhode Island</option>
+        <option value="Salem">Salem</option>
+        <option value="San Diego">San Diego</option>
+        <option value="San Francisco">San Francisco</option>
+        <option value="Seattle">Seattle</option>
+        <option value="Washington DC">Washington DC</option>
     </select>
     <br>
 
-    <!-- TODO: Instead of hard-coding these drop-down menu options, dynamically populate them based on user records from the database -->
-    <label>Twitter User B:</label>
-    <select name="screen_name_b">
-        <option value="elonmusk">@elonmusk</option>
-        <option value="justinbieber" selected="true">@justinbieber</option>
-        <option value="s2t2">@s2t2</option>
+
+    <label>Minimum Nights:</label>
+    <input type="range" min="1" max="90" value="1" class="slider" id="minimum_nights" name="minimum_nights"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>1</output>
+    <br>
+
+    <label>Maximum Nights:</label>
+    <input type="range" min="1" max="1000" value="1" class="slider" id="maximum_nights" name="maximum_nights"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>1</output>
+    <br>
+
+    <label>Property Type:</label>
+    <select name="property_type">
+        <option value="House" selected="true">House</option>
+        <option value="Apartment">Apartment</option>
+        <option value="Guesthouse">Guesthouse</option>
+        <option value="Bungalow">Bungalow</option>
+        <option value="Condominium">Condominium</option>
+        <option value="Townhouse">Townhouse</option>
+        <option value="Tiny house">Tiny house</option>
+        <option value="Cottage">Cottage</option>
+        <option value="Guest suite">Guest suite</option>
+        <option value="Camper/RV">Camper/RV</option>
+        <option value="Loft">Loft</option>
+        <option value="Hostel">Hostel</option>
+        <option value="Farm stay">Farm stay</option>
+        <option value="Chalet">Chalet</option>
+        <option value="Boutique hotel">Boutique hotel</option>
+        <option value="Serviced apartment">Serviced apartment</option>
+        <option value="Villa">Villa</option>
+        <option value="Cabin">Cabin</option>
+        <option value="Houseboat">Houseboat</option>
+        <option value="Dome house">Dome house</option>
+        <option value="Aparthotel">Aparthotel</option>
+        <option value="Campsite">Campsite</option>
+        <option value="Yurt">Yurt</option>
+        <option value="Tent">Tent</option>
+        <option value="Boat">Boat</option>
+        <option value="Tent">Tent</option>
+        <option value="Hotel">Hotel</option>
+        <option value="Treehouse">Treehouse</option>
+        <option value="Earth house">Earth house</option>
+        <option value="Other">Other</option>
+        <option value="Barn">Barn</option>
+        <option value="Castle">Castle</option>
+        <option value="Casa particular (Cuba)">Casa particular (Cuba)</option>
+        <option value="Island">Island</option>
+        <option value="Hut">Hut</option>
+        <option value="Island">Island</option>
+        <option value="Timeshare">Timeshare</option>
+        <option value="Lighthouse">Lighthouse</option>
+        <option value="Cave">Cave</option>
+        <option value="Nature lodge">Nature lodge</option>
+        <option value="Bus">Bus</option>
+        <option value="Igloo">Igloo</option>
+        <option value="Vacation home">Vacation home</option>
+        <option value="Tipi">Tipi</option>
+        <option value="Train">Train</option>
+        <option value="Minsu (Taiwan)">Minsu (Taiwan)</option>
+        <option value="Dorm">Dorm</option>
+        <option value="Pension (South Korea)">Pension (South Korea)</option>
+        <option value="In-law">In-law</option>
     </select>
     <br>
 
-    <label>Tweet Text:</label>
-    <input type="text" name="tweet_text" placeholder="Tesla Model S production facility is great"
-        value="Tesla Model S production facility is great">
+    <label>Room Type:</label>
+    <select name="room_type">
+        <option value="Private room" selected="true">Private room</option>
+        <option value="Entire home/apt">Entire home/apt</option>
+        <option value="Shared room">Shared room</option>
+        <option value="Hotel room">Hotel room</option>
+    </select>
     <br>
+
+    <label for="bathrooms">Bathrooms</label>
+    <input type="number" id="bathrooms" name="bathrooms" min=0 max=5 value=1><br>
+
+    <label for="accommodates">Accommodates</label>
+    <input type="number" id="accommodates" name="accommodates" min=0 max=5 value=1><br>
+
+    <label for="bedrooms">Bedrooms</label>
+    <input type="number" id="bedrooms" name="bedrooms" min=0 max=5 value=1><br>
+
+    <label for="beds">Beds</label>
+    <input type="number" id="beds" name="beds" min=0 max=9 value=1><br>
+
+
+    <label>Bed type:</label>
+    <select name="bed_type">
+        <option value="Real Bed" selected="true">Real Bed</option>
+        <option value="Airbed">Airbed</option>
+        <option value="Futon">Futon</option>
+        <option value="Pull-out Sofa">Pull-out Sofa</option>
+        <option value="Couch">Couch</option>
+    </select><br>
+
+
+    <label>Requires guest picture:</label>
+    <input type="radio" id="t" name="require_guest_profile_picture" value="t" checked="checked">
+    <label for="t">Yes</label>
+    <input type="radio" id="f" name="require_guest_profile_picture" value="f">
+    <label for="f">No</label>
+    <br>
+
+    <label>Transit length:</label>
+    <input type="range" min="0" max="1000" value="500" class="slider" id="transit_len" name="transit_len"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>500</output>
+    <br>
+
+    <label>Host about length:</label>
+    <input type="range" min="0" max="2000" value="1000" class="slider" id="host_about_len" name="host_about_len"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>1000</output>
+    <br>
+
+    <label>Notes length:</label>
+    <input type="range" min="0" max="1000" value="500" class="slider" id="notes_len" name="notes_len"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>500</output>
+    <br>
+
+    <label>Access length:</label>
+    <input type="range" min="0" max="1000" value="500" class="slider" id="access_len" name="access_len"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>500</output>
+    <br>
+
+    <label>House Rules length:</label>
+    <input type="range" min="0" max="1000" value="500" class="slider" id="house_rules_len" name="house_rules_len"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>500</output>
+    <br>
+
+    <label>Interaction length:</label>
+    <input type="range" min="0" max="700" value="350" class="slider" id="interaction_len" name="interaction_len"
+        oninput="this.nextElementSibling.value = this.value">
+    <output>350</output>
+    <br>
+
+    <label>Instant bookable</label>
+    <input type="radio" id="t" name="instant_bookable" value="t" checked="checked">
+    <label for="t">Yes</label>
+    <input type="radio" id="f" name="instant_bookable" value="f">
+    <label for="f">No</label>
+    <br>
+
+    <label>Require guest phone verification</label>
+    <input type="radio" id="t" name="require_guest_phone_verification" value="t" checked="checked">
+    <label for="t">Yes</label>
+    <input type="radio" id="f" name="require_guest_phone_verification" value="f">
+    <label for="f">No</label>
+    <br>
+
+
+    <label>Is business travel ready:</label>
+    <input type="radio" id="f" name="is_business_travel_ready" value="f" checked="checked">
+    <label for="t">No</label>
+    <br>
+
+    <label>Cancellation Policy:</label>
+    <select name="cancellation_policy">
+        <option value="moderate" selected="true">moderate</option>
+        <option value="flexible">flexible</option>
+        <option value="strict_14_with_grace_period">strict_14_with_grace_period</option>
+        <option value="super_strict_30">super_strict_30</option>
+        <option value="super_strict_60">super_strict_60</option>
+        <option value="luxury_moderate">luxury_moderate</option>
+        <option value="strict">strict</option>
+        <option value="luxury_super_strict_95">luxury_super_strict_95</option>
+        <option value="luxury_no_refund">luxury_no_refund</option>
+        <option value="luxury_super_strict_125">luxury_super_strict_125</option>
+    </select>
+
+    <br><br>
 
     <button>Submit</button>
 </form>
