@@ -1,19 +1,26 @@
+REVISITING THIS REPO
 
-1. Approach: linear model with K best features
+lecture notes:
+https://github.com/s2t2/lambda-ds-3-3
 
-property_type_Villa
-bathrooms
-bedrooms
-room_type_Entire home/apt
-room_type_Private room
-room_type_Shared room
-beds
-bedrooms_str_1
-bedrooms_str_7+
-beds_str_1
-accommodates
-cancellation_policy_super_strict_60
-cancellation_policy_luxury_moderate
-cancellation_policy_luxury_super_strict_95
-cancellation_policy_luxury_no_refund
+run this locally:
+if pipenv has been installed with dependencies: pipenv shell
+FLASK_APP=web_app flask run
+
+access http://localhost:5000/ to prediction form
+
+
+
+
+
+
+EVENTS
+(1) TROUBLESHOOTING: prediction not working!
+
+
+ERRORS
+400
+500
+
+
 

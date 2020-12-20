@@ -56,7 +56,7 @@ def predict():
     property_type = request.form['property_type']
     room_type = request.form['room_type']
     interaction_len = int(request.form['interaction_len'])
-    notes_len = int(request.form['notes_lxwen'])
+    notes_len = int(request.form['notes_len'])
     instant_bookable = request.form['instant_bookable']
     bed_type = request.form['bed_type']
     access_len = int(request.form['access_len'])
@@ -69,6 +69,7 @@ def predict():
     house_rules_len = int(request.form['house_rules_len'])
 
     # breakpoint()
+    print('OK')
 
     X_row = pd.DataFrame([[require_guest_profile_picture, minimum_nights,  bathrooms, transit_len, maximum_nights, host_about_len, accommodates, property_type, room_type, interaction_len, notes_len, instant_bookable, bed_type, access_len, require_guest_phone_verification,  is_business_travel_ready, cancellation_policy, bedrooms, metro_area, beds, house_rules_len]], columns=[
         'require_guest_profile_picture', 'minimum_nights', 'bathrooms', 'transit_len', 'maximum_nights', 'host_about_len', 'accommodates', 'property_type', 'room_type', 'interaction_len', 'notes_len', 'instant_bookable', 'bed_type', 'access_len', 'require_guest_phone_verification', 'is_business_travel_ready', 'cancellation_policy', 'bedrooms', 'metro_area', 'beds', 'house_rules_len'])
