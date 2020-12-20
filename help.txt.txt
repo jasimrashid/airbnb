@@ -1,7 +1,13 @@
 REVISITING THIS REPO
 
-lecture notes:
+lecture notes from mike rosetti
 https://github.com/s2t2/lambda-ds-3-3
+
+lecture notes from lambda
+https://github.com/LambdaSchool/DS-Unit-3-Sprint-3-Productization-and-Cloud/tree/master/module4-web-application-deployment
+
+video:
+
 
 run this locally:
 if pipenv has been installed with dependencies: pipenv shell
@@ -9,18 +15,71 @@ FLASK_APP=web_app flask run
 
 access http://localhost:5000/ to prediction form
 
+run this on the cloud (heroku)
+1. heroku login
+
+2. push repo to heroku server:
+(a) create a new app server
+heroku create airbnb-predictions
+
+now, you have two git repositories
+
+heroku run bash
 
 
 
+
+
+
+
+
+ARCHITECTURE SUMMARY:
+TBA
+- heroku PaaS
 
 
 EVENTS
-(1) TROUBLESHOOTING: prediction not working!
+(1) 
+TROUBLESHOOTING: prediction not working!
+(2) 
+BASIC prediction functionally works in local environment!
+LINEAR model
 
+(3) 
+deploy to production in heroku (watching video)
+(4) heroku troubleshooting / updating heroku
+
+
+
+NEXT:
+- ensure model is accurate.
+- run this with a random forest?
+- revisit modeling
+ENSURE
 
 ERRORS
 400
 500
+
+
+
+MIKE ROSETTI'S
+
+
+
+
+FYI: 
+ryan herr's dash template
+https://lambdaschool.github.io/ds/unit2/dash-template/
+
+ryan herr's dash template repo:
+https://github.com/rrherr/dash-template
+
+ryan herr's walkthrough on Youtube:
+https://www.youtube.com/watch?v=FreMhNpddEE&feature=youtu.be&t=2593
+
+
+
 
 
 
