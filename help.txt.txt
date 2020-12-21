@@ -83,7 +83,7 @@ issue? build packs update?
 
 (7)
 			....
-			** try updating pipfile: python_version = "3.7.9"
+			** try updating pipfile: python_version = "3.7.9". stack "heroku-18" does not support 3.7.3?
 
 
 
