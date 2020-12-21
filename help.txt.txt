@@ -75,6 +75,23 @@ issue? build packs update?
 		FAIL
 	trying: delete app and re-do 
 		heroku create airbnb-predictions
+		FAIL
+			potential cause python 3.7 not supported by heroku
+			try 3.7.9, 3.8..6, 3.9.1
+			pipenv --python 3.7.9 FAIL
+			try updating pipfile: python_version = "3.7.9"
+
+(7)
+			....
+			** try updating pipfile: python_version = "3.7.9"
+
+
+
+
+
+			SHORTCUT TIP: cmd + shift + . to expose hidden files
+
+
 	
 
 
