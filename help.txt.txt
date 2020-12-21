@@ -131,6 +131,7 @@ NEXT: WATCH LECTURE VIDEO
 
 (2ND HOUR)
 	lecture video. Pipfile that repository (or requirements.txt)
+
 	
 
 
