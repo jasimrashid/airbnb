@@ -110,6 +110,8 @@ issue? build packs update?
 						
 						scale dynos from 0 to 1?
 
+**heroku logs --tail
+
 
 
 
@@ -141,6 +143,11 @@ ENSURE
 ERRORS
 400
 500
+
+relevant definitions:
+Gunicorn is a pure-Python HTTP server for WSGI applications. It allows you to run any Python application concurrently by running multiple Python processes within a single dyno. It provides a perfect balance of performance, flexibility, and configuration simplicity.
+
+
 
 
 

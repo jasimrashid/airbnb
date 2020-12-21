@@ -1,0 +1,13 @@
+BLOG NOTES:
+
+- pausing your project and returning to it is a pain in the ass. for me it takes a long retracing steps, as i forget how all the different components of my app fit together. to avoid this, keep a good README. in addition to helping others run your app, it'll be useful to yourself!
+
+
+
+
+
+- deploy; put in on the cloud!!
+why? it helps you coordinate with engineers and devops
+big3 - AWS, azure, GCS
+VPS
+PaaS(heroku)
