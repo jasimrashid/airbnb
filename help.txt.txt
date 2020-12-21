@@ -104,6 +104,16 @@ issue? build packs update?
 
 (10)			....
 				Updated more dependencies. the pipfile was not setup properly earlier
+					deployment successful: 
+						BUT error: H14 "no web dynos working" 
+						ref: https://devcenter.heroku.com/articles/error-codes
+						
+						scale dynos from 0 to 1?
+
+
+
+
+** app: https://airbnb-predictions.herokuapp.com/
 
 					
 
