@@ -27,6 +27,11 @@ now, you have two git repositories
 heroku run bash
 
 
+FYI:
+# check remote
+git remote - v
+
+
 
 
 
@@ -47,8 +52,12 @@ LINEAR model
 
 (3) 
 deploy to production in heroku (watching video)
-(4) heroku troubleshooting / updating heroku
+(4) heroku troubleshooting / updating heroku *****
 
+(5) heroku troubleshooting
+issue? build packs update?
+issue? pipfile in root folder. reinstalling:
+	pipenv install Flask, scikit-learn, pandas, pickle, traceback, numpy
 
 
 NEXT:

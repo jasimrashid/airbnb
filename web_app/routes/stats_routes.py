@@ -3,9 +3,6 @@ import os
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
 import pickle
-import traceback
-from numpy import genfromtxt
-
 
 MODEL_FILEPATH = os.path.join(os.path.dirname(
     __file__), "..", "models", "latest_model.pkl")
