@@ -120,6 +120,14 @@ DEC 21
 			pipenv out of data:> delete and then pipenv lock. git push to origin and heroku
 
 
+			new issue: H10 error / dyne crashes
+
+			Procfile variations: 
+			web: gunicorn --bind 0.0.0.0:$PORT flaskapp:app
+			web: gunicorn wsgi:app
+
+
+
 
 
 
