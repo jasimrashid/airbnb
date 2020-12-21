@@ -34,7 +34,7 @@ def create_app():
     app.register_blueprint(book_routes)
     app.register_blueprint(stats_routes)
 
-    app.run(debug=True)
+    # app.run(debug=True)
 
     return app
 
