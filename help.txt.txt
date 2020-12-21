@@ -131,6 +131,8 @@ NEXT: WATCH LECTURE VIDEO
 
 (2ND HOUR)
 	lecture video. Pipfile that repository (or requirements.txt)
+	FIXED!!
+	# app.run(debug=True) WHAT A PIECE OF SHIT!!!!!
 
 	
 

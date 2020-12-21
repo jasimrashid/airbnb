@@ -29,14 +29,17 @@ stats_routes = Blueprint("stats_routes", __name__)
 
 def load_model():
     print("LOADING THE MODEL...")
-    filename = '/Users/jasimrashid/Projects/DS-Unit-4-Build-Week-4-Airbnb/linear_model_pipeline_v2.pkl'
+    # filename = '/Users/jasimrashid/Projects/DS-Unit-4-Build-Week-4-Airbnb/linear_model_pipeline_v2.pkl'
+    filename = os.path.join(os.path.dirname(__file__),
+                            "../..", "models", "linear_model_pipeline_v2.pkl")
+    # breakpoint()
     with open(filename, 'rb') as model_file:
         loaded_model = pickle.load(model_file)
     # breakpoint()
     return loaded_model
 
 
-@stats_routes.route("/predict", methods=["POST"])
+@ stats_routes.route("/predict", methods=["POST"])
 def predict():
     print("PREDICTTTTTTTTTTTTTT ROUTE...")
     print("FORM DATA:", dict(request.form))
