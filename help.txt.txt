@@ -112,6 +112,15 @@ issue? build packs update?
 
 **heroku logs --tail
 
+DEC 21
+
+(1ST HOUR)
+		....					
+			ISSUE: CANNOT SCALE DYNOS. 
+			pipenv out of data:> delete and then pipenv lock
+
+
+
 
 
 
