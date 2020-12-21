@@ -86,12 +86,36 @@ issue? build packs update?
 			** try updating pipfile: python_version = "3.7.9". stack "heroku-18" does not support 3.7.3?
 
 
+(8)
+			...
+			push repo to origin
+			heroku create airbnb-predictions --buildpack heroku/python
+			then git push origin main
+				NEW ERROR "Your Pipfile.lock (89cdec) is out of date. Expected: (f17a82)."
+					fix: deleted it. exited shell. 
 
 
 
-			SHORTCUT TIP: cmd + shift + . to expose hidden files
+			
+
+(9)			....
+				NEW ERROR "Your Pipfile.lock (89cdec) is out of date. Expected: (f17a82)."
+					fix: deleted it. exited shell. 
+
+(10)			....
+				Updated more dependencies. the pipfile was not setup properly earlier
+
+					
 
 
+
+
+
+
+
+
+
+SHORTCUT TIP: cmd + shift + . to expose hidden files
 	
 
 

@@ -4,11 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-scikit-learn = "*"
-pandas = "*"
+python-dotenv = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+category-encoders = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.7.3"
+python_version = "3.7"
