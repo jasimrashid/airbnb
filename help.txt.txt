@@ -11,6 +11,8 @@ video:
 
 run this locally:
 if pipenv has been installed with dependencies: pipenv shell
+
+***
 FLASK_APP=web_app flask run
 
 access http://localhost:5000/ to prediction form
@@ -50,14 +52,33 @@ TROUBLESHOOTING: prediction not working!
 BASIC prediction functionally works in local environment!
 LINEAR model
 
-(3) 
-deploy to production in heroku (watching video)
+(3) deploying to production in heroku (watching video)
+
 (4) heroku troubleshooting / updating heroku *****
 
 (5) heroku troubleshooting
 issue? build packs update?
-issue? pipfile in root folder. reinstalling:
-	pipenv install Flask, scikit-learn, pandas, pickle, traceback, numpy
+	issue? pipfile in root folder. reinstalling:
+		pipenv install Flask, scikit-learn, pandas, numpy
+			fix: breaking up pipenv install
+
+(6) heroku troubleshooting
+
+issue? build packs update?
+	issue? pipfile in root folder. reinstalling:
+		pipenv install Flask, scikit-learn, pandas, numpy
+			fix: breaking up pipenv install
+issue? build packs update?
+	adding runtime.txt 
+		FAIL
+	trying: heroku buildpacks:set heroku/php
+		FAIL
+	trying: delete app and re-do 
+		heroku create airbnb-predictions
+	
+
+
+
 
 
 NEXT:
