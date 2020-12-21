@@ -117,7 +117,7 @@ DEC 21
 (1ST HOUR)
 		....					
 			ISSUE: CANNOT SCALE DYNOS. 
-			pipenv out of data:> delete and then pipenv lock
+			pipenv out of data:> delete and then pipenv lock. git push to origin and heroku
 
 
 
