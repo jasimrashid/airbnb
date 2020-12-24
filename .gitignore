@@ -6,5 +6,8 @@ migrations/
 # ignore secret credentials
 .env
 
-# jasim's scratchpad
+# jasim's own notes
 help.txt
+help-MVP1.rtf
+help-MVP2.rtf
+blog-notes.txt
