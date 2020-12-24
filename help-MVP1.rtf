@@ -1,0 +1,238 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red129\green255\blue255;\red36\green255\blue255;\red141\green0\blue2;
+\red255\green255\blue11;\red18\green111\blue167;\red139\green255\blue8;\red133\green80\blue3;}
+{\*\expandedcolortbl;;\cssrgb\c56043\c100000\c100000;\cssrgb\c4983\c100000\c100000;\cssrgb\c62986\c0\c0;
+\cssrgb\c100000\c100000\c0;\cssrgb\c4205\c51291\c71506;\cssrgb\c59955\c100000\c0;\cssrgb\c59784\c38775\c0;}
+\margl1440\margr1440\vieww14100\viewh10740\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf2 REVISITING AIRBNB REPO CHRISTMAS WEEK MVP
+\f1\b0 \cf0 \
+\
+
+\f0\b \cf3 Key reference
+\f1\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx3921\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 lecture notes from mike rosetti\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 https://github.com/s2t2/lambda-ds-3-3\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 lecture notes from lambda\cf0 \
+https://github.com/LambdaSchool/DS-Unit-3-Sprint-3-Productization-and-Cloud/tree/master/module4-web-application-deployment\
+\
+\cf2 video:\cf0 \
+https://www.youtube.com/watch?v=RXJT5nnrb50&feature=youtu.be\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf3 run this locally:
+\f1\b0 \cf0 \
+if pipenv has been installed with dependencies: pipenv shell\
+***\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf4 FLASK_APP=web_app flask run\cf0 \
+access http://localhost:5000/ to prediction form\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf3 run this on the cloud (heroku)
+\f1\b0 \cf0 \
+1. heroku login\
+\
+2. push repo to heroku server:\
+(a) create a new app server\
+heroku create airbnb-predictions\
+\
+now, you have two git repositories\
+\
+heroku run bash\
+\
+FYI:\
+# check remote\
+git remote - v\
+\
+\
+ARCHITECTURE SUMMARY:\
+TBA\
+- heroku PaaS\
+\
+\
+EVENTS\
+(1) \
+TROUBLESHOOTING: prediction not working!\
+(2) \
+BASIC prediction functionally works in local environment!\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf5 LINEAR model\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+(3) deploying to production in heroku (watching video)\
+\
+(4) heroku troubleshooting / updating heroku *****\
+\
+(5) heroku troubleshooting\
+issue? \cf5 build packs update?\cf0 \
+	issue? pipfile in root folder. reinstalling:\
+		pipenv install Flask, scikit-learn, pandas, numpy\
+			fix: breaking up pipenv install\
+\
+(6) heroku troubleshooting\
+\
+issue? build packs update?\
+	issue? pipfile in root folder. reinstalling:\
+		pipenv install Flask, scikit-learn, pandas, numpy\
+			fix: breaking up pipenv install\
+issue? build packs update?\
+	adding runtime.txt \
+		FAIL\
+	trying: heroku buildpacks:set heroku/php\
+		FAIL\
+	trying: delete app and re-do \
+		heroku create airbnb-predictions\
+		FAIL\
+			potential cause python 3.7 not supported by heroku\
+			try 3.7.9, 3.8..6, 3.9.1\
+			pipenv --python 3.7.9 FAIL\
+			try updating pipfile: python_version = "3.7.9"\
+\
+(7)\
+			....\
+			** try updating pipfile: python_version = "3.7.9". stack "heroku-18" does not support 3.7.3?\
+\
+\
+(8)\
+			...\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf6 			push repo to origin\
+			heroku create airbnb-predictions --buildpack heroku/python\
+			then git push origin main\
+				NEW ERROR "Your Pipfile.lock (89cdec) is out of date. Expected: (f17a82)."\
+					fix: deleted it. exited shell. \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+			\
+\
+(9)			....\
+				NEW ERROR "Your Pipfile.lock (89cdec) is out of date. Expected: (f17a82)."\
+					fix: deleted it. exited shell. \
+\
+(10)			....\
+				Updated more dependencies. the pipfile was not setup properly earlier\
+					deployment successful: \
+						BUT error: H14 "no web dynos working" \
+						ref: https://devcenter.heroku.com/articles/error-codes\
+						\
+						scale dynos from 0 to 1?\
+\
+**heroku logs --tail\
+\
+DEC 21\
+\
+(1ST HOUR)\
+		....					\
+			ISSUE: CANNOT SCALE DYNOS. \
+			pipenv out of data:> delete and then pipenv lock. git push to origin and heroku\
+\
+\
+			new issue: H10 error / dyne crashes\
+\
+			Procfile variations: \
+			web: gunicorn --bind 0.0.0.0:$PORT flaskapp:app\
+			web: gunicorn wsgi:app\
+			web: gunicorn app:app\
+\
+NEXT: WATCH LECTURE VIDEO\
+\
+(2ND HOUR)\
+	lecture video. Pipfile that repository (or requirements.txt)\
+	FIXED!!\
+	# app.run(debug=True) WHAT A PIECE OF SHIT!!!!!\
+\
+	1t MVP DONE!!!!!!!\
+	c17a406\
+\
+	\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf7 SHORTCUT TIP: cmd + shift + . to expose hidden files\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 	\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf0 relevant definitions:
+\f1\b0 \
+Gunicorn is a pure-Python HTTP server for WSGI applications. It allows you to run any Python application concurrently by running multiple Python processes within a single dyno. It provides a perfect balance of performance, flexibility, and configuration simplicity.\
+\
+\
+
+\f0\b \cf8 LINKS
+\f1\b0 \
+FYI: \
+ryan herr's dash template\
+https://lambdaschool.github.io/ds/unit2/dash-template/\
+\
+ryan herr's dash template repo:\
+https://github.com/rrherr/dash-template\
+\
+ryan herr's walkthrough on Youtube:\
+https://www.youtube.com/watch?v=FreMhNpddEE&feature=youtu.be&t=2593\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf4 NEXT STEPS\
+
+\f1\b0 \
+housekeeping:\
+- clean up repo superficially\
+- README\
+\
+- remove\
+	- irisclassifir\
+	- models.py\
+	- routes: book_routes (and/or home_routes)\
+	- databases\
+\
+MVP#2:\
+- model updates: simplify model + \
+- deploy it a separate branch OR deploy it in a new app?\
+- presentable output in flask\
+- research actual pricing engine stuff\
+- blog notebook\
+- architecture summary\
+\
+MVP#3:\
+- fastAPI\
+\
+\
+OTHERS:\
+- ensure model is accurate.\
+- run this with a random forest?\
+- revisit modeling\
+ENSURE\
+\
+FUTURE ITERATIONS OF SAME\
+- download twitoff and reverse engineer from its scaffold\
+\
+\
+QUESTION\
+\
+- i made the mistake of trying to code up a heroku app instead of reverse engineering a scaffold. and it took way too long.\
+so i could undertand the pieces and customize as necessary. \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
