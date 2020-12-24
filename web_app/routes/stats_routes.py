@@ -31,7 +31,7 @@ def load_model():
     print("LOADING THE MODEL...")
     # filename = '/Users/jasimrashid/Projects/DS-Unit-4-Build-Week-4-Airbnb/linear_model_pipeline_v2.pkl'
     filename = os.path.join(os.path.dirname(__file__),
-                            "../..", "models", "linear_model_pipeline_v2.pkl")
+                            "../..", "models", "decision_tree_model_fewer_features.pkl")
     # breakpoint()
     with open(filename, 'rb') as model_file:
         loaded_model = pickle.load(model_file)
@@ -46,37 +46,41 @@ def predict():
     # > {'screen_name_a': 'elonmusk', 'screen_name_b': 's2t2', 'tweet_text': 'Example tweet text here'}
 
     # TODO form elements: linear model k best
-    require_guest_profile_picture = request.form['require_guest_profile_picture']
-    minimum_nights = request.form['minimum_nights']
-    bathrooms = int(request.form['bathrooms'])
-    transit_len = int(request.form['transit_len'])
+# input form variables
+
+# input form variables
+
+    # longitude = request.form['longitude']
+    # latitude = request.form['latitude']
+
+    # default values for Austin
+    latitude = 30.2672
+    longitude = 97.7431
+
+    minimum_nights = int(request.form['minimum_nights'])
     maximum_nights = int(request.form['maximum_nights'])
-    host_about_len = int(request.form['host_about_len'])
-    accommodates = request.form['accommodates']
     property_type = request.form['property_type']
     room_type = request.form['room_type']
-    interaction_len = int(request.form['interaction_len'])
-    notes_len = int(request.form['notes_len'])
-    instant_bookable = request.form['instant_bookable']
-    bed_type = request.form['bed_type']
-    access_len = int(request.form['access_len'])
-    require_guest_phone_verification = request.form['require_guest_phone_verification']
-    is_business_travel_ready = request.form['is_business_travel_ready']
-    cancellation_policy = request.form['cancellation_policy']
+    bathrooms = int(request.form['bathrooms'])
+    accommodates = request.form['accommodates']
     bedrooms = int(request.form['bedrooms'])
-    metro_area = request.form['metro_area']
     beds = int(request.form['beds'])
-    house_rules_len = int(request.form['house_rules_len'])
+    bed_type = request.form['bed_type']
+    transit_len = int(request.form['transit_len'])
+    instant_bookable = request.form['instant_bookable']
+    cancellation_policy = request.form['cancellation_policy']
 
-    # breakpoint()
     print('OK')
 
-    X_row = pd.DataFrame([[require_guest_profile_picture, minimum_nights,  bathrooms, transit_len, maximum_nights, host_about_len, accommodates, property_type, room_type, interaction_len, notes_len, instant_bookable, bed_type, access_len, require_guest_phone_verification,  is_business_travel_ready, cancellation_policy, bedrooms, metro_area, beds, house_rules_len]], columns=[
-        'require_guest_profile_picture', 'minimum_nights', 'bathrooms', 'transit_len', 'maximum_nights', 'host_about_len', 'accommodates', 'property_type', 'room_type', 'interaction_len', 'notes_len', 'instant_bookable', 'bed_type', 'access_len', 'require_guest_phone_verification', 'is_business_travel_ready', 'cancellation_policy', 'bedrooms', 'metro_area', 'beds', 'house_rules_len'])
-    linear_model = load_model()
+    # X_row = pd.DataFrame([[minimum_nights,  bathrooms, transit_len, maximum_nights, accommodates, property_type, room_type, instant_bookable, bed_type, cancellation_policy, bedrooms, beds, ]], columns=[
+    #     'minimum_nights', 'bathrooms', 'transit_len', 'maximum_nights', 'accommodates', 'room_type', 'instant_bookable', 'bed_type', 'cancellation_policy', 'bedrooms', 'beds'])
+    X_row = pd.DataFrame([[minimum_nights, transit_len, room_type, accommodates, longitude, bedrooms, instant_bookable, beds, bathrooms, maximum_nights, cancellation_policy, bed_type, latitude, property_type]], columns=[
+                         'minimum_nights', 'transit_len', 'room_type', 'accommodates', 'longitude', 'bedrooms', 'instant_bookable', 'beds', 'bathrooms', 'maximum_nights', 'cancellation_policy', 'bed_type', 'latitude', 'property_type'])
+
+    model = load_model()
 
     # breakpoint()
-    y = linear_model.predict(X_row)
+    y = model.predict(X_row)
     print('Prediction: ', y)
 
     # print("hello************", screen_name_a)
@@ -104,8 +108,10 @@ def predict():
 
 if __name__ == "__main__":
 
-    linear_model = load_model()
+    # linear_model = load_model()
+    decision_tree_model = load_model()
     # TODO: use env variable
     X_train = pd.read_csv(
-        '/Users/jasimrashid/Projects/DS-Unit-4-Build-Week-4-Airbnb/x_train.csv')
-    print(linear_model.predict(X_train))
+        '/Users/jasimrashid/Projects/DS-Unit-4-Build-Week-4-Airbnb/temp/x_train_100rows.csv', index_col=False)
+    del X_train['Unnamed: 0']  # delete index
+    print(decision_tree_model.predict(X_train))

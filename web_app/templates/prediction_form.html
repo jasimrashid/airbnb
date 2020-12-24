@@ -51,6 +51,7 @@
     <output>1</output>
     <br>
 
+
     <label>Property Type:</label>
     <select name="property_type">
         <option value="House" selected="true">House</option>
@@ -137,48 +138,13 @@
     </select><br>
 
 
-    <label>Requires guest picture:</label>
-    <input type="radio" id="t" name="require_guest_profile_picture" value="t" checked="checked">
-    <label for="t">Yes</label>
-    <input type="radio" id="f" name="require_guest_profile_picture" value="f">
-    <label for="f">No</label>
-    <br>
-
     <label>Transit length:</label>
     <input type="range" min="0" max="1000" value="500" class="slider" id="transit_len" name="transit_len"
         oninput="this.nextElementSibling.value = this.value">
     <output>500</output>
     <br>
 
-    <label>Host about length:</label>
-    <input type="range" min="0" max="2000" value="1000" class="slider" id="host_about_len" name="host_about_len"
-        oninput="this.nextElementSibling.value = this.value">
-    <output>1000</output>
-    <br>
 
-    <label>Notes length:</label>
-    <input type="range" min="0" max="1000" value="500" class="slider" id="notes_len" name="notes_len"
-        oninput="this.nextElementSibling.value = this.value">
-    <output>500</output>
-    <br>
-
-    <label>Access length:</label>
-    <input type="range" min="0" max="1000" value="500" class="slider" id="access_len" name="access_len"
-        oninput="this.nextElementSibling.value = this.value">
-    <output>500</output>
-    <br>
-
-    <label>House Rules length:</label>
-    <input type="range" min="0" max="1000" value="500" class="slider" id="house_rules_len" name="house_rules_len"
-        oninput="this.nextElementSibling.value = this.value">
-    <output>500</output>
-    <br>
-
-    <label>Interaction length:</label>
-    <input type="range" min="0" max="700" value="350" class="slider" id="interaction_len" name="interaction_len"
-        oninput="this.nextElementSibling.value = this.value">
-    <output>350</output>
-    <br>
 
     <label>Instant bookable</label>
     <input type="radio" id="t" name="instant_bookable" value="t" checked="checked">
@@ -187,18 +153,6 @@
     <label for="f">No</label>
     <br>
 
-    <label>Require guest phone verification</label>
-    <input type="radio" id="t" name="require_guest_phone_verification" value="t" checked="checked">
-    <label for="t">Yes</label>
-    <input type="radio" id="f" name="require_guest_phone_verification" value="f">
-    <label for="f">No</label>
-    <br>
-
-
-    <label>Is business travel ready:</label>
-    <input type="radio" id="f" name="is_business_travel_ready" value="f" checked="checked">
-    <label for="t">No</label>
-    <br>
 
     <label>Cancellation Policy:</label>
     <select name="cancellation_policy">

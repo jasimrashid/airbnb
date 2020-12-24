@@ -1,0 +1,333 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;\red36\green255\blue255;\red255\green255\blue11;\red19\green19\blue19;
+\red139\green255\blue8;\red141\green0\blue2;\red129\green255\blue255;\red251\green0\blue7;\red19\green19\blue19;
+\red0\green0\blue0;\red253\green139\blue9;\red251\green0\blue7;\red98\green0\blue152;\red133\green80\blue3;
+\red131\green129\blue4;\red34\green255\blue172;\red18\green111\blue167;\red85\green136\blue3;\red145\green0\blue147;
+}
+{\*\expandedcolortbl;;\cssrgb\c4983\c100000\c100000;\cssrgb\c100000\c100000\c0;\cssrgb\c9818\c9821\c9820;
+\cssrgb\c59955\c100000\c0;\cssrgb\c62986\c0\c0;\cssrgb\c56043\c100000\c100000;\cssrgb\c100000\c12195\c0;\cssrgb\c9818\c9821\c9820;
+\cssrgb\c0\c1\c1;\cssrgb\c100000\c61656\c0;\cssrgb\c100000\c12195\c0;\cssrgb\c46715\c5470\c66149;\cssrgb\c59784\c38775\c0;
+\cssrgb\c58334\c56884\c0;\cssrgb\c1226\c100000\c72995;\cssrgb\c4205\c51291\c71506;\cssrgb\c39979\c59107\c0;\cssrgb\c64494\c4644\c64494;
+}
+\margl1440\margr1440\vieww7640\viewh12160\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 DEC 24 execution:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+go to main local repo: \
+/Users/jasimrashid/Projects/airbnb\
+\
+\
+\cf2  git checkout -b mvp2 \cf0 \
+\
+			# shows branches checked out\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf2 				git remote show https://github.com/jasimrashid/airbnb.git\cf0 \
+\
+identify non relevant code:\
+- delete book route and home routes\
+\cf3 	note: \cf4 later you want to implement something like the book route where you\'92re creating objects and interacting with a database\
+\cf0 - templates>books.html, new_book.html\
+- all associations in  __init__.py and other\
+	- database config, init and migrate\
+	- register blueprints of routes\
+- iris_classifier\
+- airbnb_test.db\
+- models.py\
+- hello.py\
+\
+# removed heroku remote\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 git remote rm origin\
+\
+\cf4 # added heroku calm-springs as remote\cf2 \
+git remote add heroku https://git.heroku.com/calm-plains-09823.git\
+\cf0 \
+origin \'97> main\
+\cf5 origin \'97> branch \'97> local \'97> heroku \'91calm springs\'92\
+\cf0 	\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf6 # this pushes from branch\'92s local to heroku main
+\f0\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 git push heroku mvp2:main\
+\
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 test out simpler model in ipynb\
+\
+\
+1.airbnb_eda_cycle_1.ipynb\
+\
+(A) import, pre-processing\
+\
+\cf6 input: airbnb_listings_usa.csv\cf0 \
+\cf4 - 
+\f0\b0 \cf4 import: data input: data>
+\f1\b \cf4 airbnb_listings_usa.csv 
+\f0\b0 \cf4 to df\cf0 \
+- drop columns\
+- preprocessing since populated values are inconsistent\
+\
+- feature engineering: create your own aggregate location feature called \'91metro_area\'92\
+\
+- drop some rows with nulls impractical chasing it down to the lat 0.001%\
+\
+(B) descriptive statistics\
+\
+our key measure is price. that\'92ll be our target. look at its distribution\
+some plots\
+\
+- detect outliers, look at boxplot, distribution of prices. \
+- break boxplot down by metro areas. \
+\
+next, look at categorical measures\
+\
+- bedrooms have wild outliers. now look at box plots for bedrooms\
+\
+-** note on analysis\
+\
+- more cleansing; no problem this stuff is iterative.\
+\
+
+\f1\b \cf6 output
+\f0\b0 \cf6 : airbnb_listings_usa_cycle_1.csv
+\f1\b \cf0 \
+\
+2.airbnb_eda_cycle_2.ipynb\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 baseline price = mean = 242\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 split into numeric and non-numeric columns\
+\
+if dataset is small you can plot pairs of numeric columns to eye ball any correlations if they are visible\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 3. airbnb_predictions_1_linear.ipynb
+\f0\b0 \
+\
+import 
+\f1\b \cf7 sci kit learn\'92s linear model
+\f0\b0 \cf0 \
+select features and target > sparse features > usable > numeric > non-numeric \'85.. \'97> selected features\
+\
+test train split randomly by .2\
+\
+note that scikit learn\'92s ordinal encoder is different from another one\'92s ordinal encoder library which is a lot easier to use! \
+\
+after 1-hot encoding, you go from 24 features to 107 features\
+\
+MAE of linear model = $179\
+MAE of baseline = $210\
+\'93you get a better prediction with some model than no model at all\'94\
+\
+\
+Ridge regression\
+- import from scikit learn\
+MAE of ridge regression = $169\
+\
+
+\f1\b \cf8 [A:
+\f0\b0 \cf0  create a visual for approach to get to selected features]\
+\
+optimize for alpha\
+\
+Going from 107 features to 15 features\
+Use 
+\f1\b \cf7 K-best features\
+\
+\cf4 MAE goes down from 169 to 167\
+\
+===\
+\
+Pickle the model using pickle library\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf4 save and load linear regression model\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf9 save and load ridge regression model\
+\
+==\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf9 Using pipelines:
+\f0\b0 \cf9 \
+\
+train model, pickle and load. test prediction.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 4. airbnb_predictions_1_decision_trees.ipynb\
+\
+\cf8 A
+\f0\b0 \cf8 : >> train and test accuracy values don\'92t make sense. look into this\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf10 - decision tree model\
+	MAE = $134\
+- train random forest. takes too long! \cf11 about 12 minutes\cf10 \
+	MAE = $105\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf4 simplify features to run random forest
+\f0\b0 \cf12 \
+\
+
+\f1\b \cf4 14 features
+\f0\b0 \cf4 :\
+[ 'minimum_nights', 'transit_len', 'room_type', 'accommodates',\
+       'longitude', 'bedrooms', 'instant_bookable', 'beds', 'bathrooms',\
+       'maximum_nights', 'cancellation_policy', 'bed_type', 'latitude',\
+       'property_type']\
+\
+\
+decision tree trains in 9 seconds\
+MAE = $131\
+\
+random forest trains in 290 seconds\
+\cf9 MAE = $107\
+\
+load picked random forest model and determine MAE \
+~ runs in 12 seconds\
+\
+\
+
+\f1\b \cf7 Updating stats_routes
+\f0\b0 \cf9 \
+	copied and pasted \'93\cf5 models/decision_tree_model_fewer_features.pkl\cf9 \'94\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf12 \
+	\cf9 updated stats_routes.load_model() \
+		filename = \'85\'85 decision_tree_\'85..pkl\cf12 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf10 updating app\
+\
+
+\f0\b0 testing with X_train_10rows - 14 features\cf12 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf11 Update form
+\f0\b0 \cf12 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf10 adding lat and long to form (this needs a mapping feature to be user-friendly). \
+\
+\cf4 added default lat and long for austin in form. dummy value\cf8 \
+\cf10 \
+next: add dictionary providing lat and long for each metro area\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf8 Issue
+\f0\b0 \cf10 : predictions don\'92t seem to change\
+
+\f1\b \cf8 NEXT 
+\f0\b0 \cf10 debug this issue\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf12 \
+\
+\cf13 ** add to blog: \
+why are decision trees better? categorical variables have meaning an have significant impact. e.g. cancellation policy potentially impacts a customer\'92s decision. i pay a premium when i make tentative plans. higher fee for cancelable reservations. \
+\cf12 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf14 next:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf15 - simplify model by reducing features
+\f1\b \cf14 \
+- 
+\f0\b0 pickle random forest within ipynb\cf12 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf11 - pickle and load decision tree in local environment and separate heroku app\
+\
+substeps:\
+- 
+\f0\b0 \cf11 temporary: throw picked model in models\
+- update WSGI input parser methods to select correct fields\
+- Updated features: \
+	\'97 update in form\
+	__ update in input parser\
+	\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf15 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf16 - save models into specific folders\cf15 \
+- try the same with random forest\
+\cf16 - clean up structure of folder\cf15 \
+- ideas for blog presentation: \
+	tables at the end cross comparing different models; results\
+	run as many models as possible\
+	try and apply NLP as well!\
+\
+\
+\cf17 nice to have:\
+- lat and long provide best locational precision.\
+	but what is the best way to incprporate them into a form?\
+\
+	there has to be a library or an API that\'92s free. Otherwise, can I code my own?\
+\
+- give them a preview of what i mean by excel eyeballing, pivoting, etc.\
+\
+- super bonus!!! add map based locator!!!!\cf15 \
+\
+\
+note:\
+- limitaiotns: dataset is pre-covid. \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf12 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf10 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf9 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf9 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \
+\
+\
+\cf18 redundant files:\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 \
+\
+\cf19 question:\cf0 \
+- during preprocessing in normal stats, you remove outliers. when training with a tree-based model, do you do the same?\
+- excluding features like \'93host_\'94 prevents \'93leaking\'94?\
+\
+	- then test it out in python module\
+	- simplify form?\
+	- run locally\
+	- then run remotely\
+	- next set of changes are aesthetic\
+}
