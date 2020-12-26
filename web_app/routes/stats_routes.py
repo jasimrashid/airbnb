@@ -3,6 +3,7 @@ import os
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
 import pickle
+import logging
 
 MODEL_FILEPATH = os.path.join(os.path.dirname(
     __file__), "..", "models", "latest_model.pkl")
@@ -51,6 +52,8 @@ metro_coord_mapping = {'Austin': (30.2672, 97.7431),
                        'Seattle': (47.6062, 122.3321),
                        'Washington DC': (38.9072, 77.0369)}
 
+extData = {'user': 'joem@example.com', 'boy': 'good'}
+
 
 def load_model():
     print("LOADING THE MODEL...")
@@ -66,14 +69,14 @@ def load_model():
 
 @ stats_routes.route("/predict", methods=["POST"])
 def predict():
-    print("PREDICTTTTTTTTTTTTTT ROUTE...")
-    print("FORM DATA:", dict(request.form))
+    # print("PREDICTTTTTTTTTTTTTT ROUTE...")
+    # print("FORM DATA:", dict(request.form))
     # > {'screen_name_a': 'elonmusk', 'screen_name_b': 's2t2', 'tweet_text': 'Example tweet text here'}
 
     # TODO form elements: linear model k best
-# input form variables
+    # input form variables
 
-# input form variables
+    # input form variables
 
     # longitude = request.form['longitude']
     # latitude = request.form['latitude']
@@ -101,10 +104,37 @@ def predict():
 
     print("model inputs: ", metro_area, latitude, longitude)
 
-    # X_row = pd.DataFrame([[minimum_nights,  bathrooms, transit_len, maximum_nights, accommodates, property_type, room_type, instant_bookable, bed_type, cancellation_policy, bedrooms, beds, ]], columns=[
-    #     'minimum_nights', 'bathrooms', 'transit_len', 'maximum_nights', 'accommodates', 'room_type', 'instant_bookable', 'bed_type', 'cancellation_policy', 'bedrooms', 'beds'])
-    X_row = pd.DataFrame([[minimum_nights, transit_len, room_type, accommodates, longitude, bedrooms, instant_bookable, beds, bathrooms, maximum_nights, cancellation_policy, bed_type, latitude, property_type]], columns=[
+    x_train_row = {'latitude': latitude, 'longitude': longitude,
+                   'minimum_nights': minimum_nights, 'maximum_nights': maximum_nights, 'property_type': property_type,
+                   'room_type': room_type, 'bathrooms': bathrooms, 'accommodates': accommodates, 'bedrooms': bedrooms, 'beds': beds, 'bed_type': bed_type,
+                   'transit_len': transit_len, 'instant_bookable': instant_bookable, 'cancellation_policy': cancellation_policy}
+
+    X_train_row = {
+        'minimum_nights': minimum_nights,
+        'transit_len': transit_len,
+        'room_type': room_type,
+        'accommodates': accommodates,
+        'longitude': longitude,
+        'bedrooms': bedrooms,
+        'instant_bookable': instant_bookable,
+        'beds': beds,
+        'bathrooms': bathrooms,
+        'maximum_nights': maximum_nights,
+        'cancellation_policy': cancellation_policy,
+        'bed_type': bed_type,
+        'latitude': latitude,
+        'property_type': property_type
+    }
+
+    # fmtStr = "%(minimum_nights)s, %(transit_len)s, %(room_type)s, %(accommodates)s, %(longitude)s, %(bedrooms)s, %(instant_bookable)s, %(beds)s, %(bathrooms)s, %(maximum_nights)s, %(cancellation_policy)s, %(bed_type)s, %(latitude)s, %(property_type)s"
+    # logging.basicConfig(level=logging.DEBUG,filename="output.log",format=fmtStr)
+    # logging.info("row: ", extra=X_train_row)
+
+    X_row = pd.DataFrame([[minimum_nights, transit_len, room_type, accommodates, longitude, bedrooms,
+                           instant_bookable, beds, bathrooms, maximum_nights, cancellation_policy, bed_type, latitude, property_type]], columns=[
                          'minimum_nights', 'transit_len', 'room_type', 'accommodates', 'longitude', 'bedrooms', 'instant_bookable', 'beds', 'bathrooms', 'maximum_nights', 'cancellation_policy', 'bed_type', 'latitude', 'property_type'])
+
+    print(X_train_row)
 
     model = load_model()
 
