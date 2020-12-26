@@ -1,4 +1,5 @@
 migrations/
+data/
 
 *.db
 
@@ -11,3 +12,4 @@ help.txt
 help-MVP1.rtf
 help-MVP2.rtf
 blog-notes.txt
+

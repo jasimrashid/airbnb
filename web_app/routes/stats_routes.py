@@ -26,6 +26,31 @@ stats_routes = Blueprint("stats_routes", __name__)
 # @stats_routes.route("/predict_form", methods=["POST"])
 # def predict_html():
 
+metro_coord_mapping = {'Austin': (30.2672, 97.7431),
+                       'Boston': (42.3601, 71.0589),
+                       'Broward': (26.1901, 80.3659),
+                       'Cambridge': (42.3736, 71.1097),
+                       'Chicago': (41.8781, 87.6298),
+                       'Twin Cities': (44.9375, 93.2010),
+                       'Clark CO': (36.0796, 115.0940),
+                       'Columbus': (39.9612, 82.9988),
+                       'Denver': (39.7392, 104.9903),
+                       'Hawaii': (19.8968, 155.5828),
+                       'Jersey City': (40.7178, 74.0431),
+                       'New York City': (40.7128, 74.0060),
+                       'Los Angeles': (34.0522, 118.2437),
+                       'Oakland': (37.8044, 122.2712),
+                       'Nashville': (36.1627, 86.7816),
+                       'New Orleans': (29.9511, 90.0715),
+                       'Santa Clara': (37.3541, 121.9552),
+                       'Portland': (45.5051, 122.6750),
+                       'Rhode Island': (41.5801, 71.4774),
+                       'Salem': (44.9429, 123.0351),
+                       'San Diego': (32.7157, 117.1611),
+                       'San Francisco': (37.7749, 122.4194),
+                       'Seattle': (47.6062, 122.3321),
+                       'Washington DC': (38.9072, 77.0369)}
+
 
 def load_model():
     print("LOADING THE MODEL...")
@@ -54,8 +79,12 @@ def predict():
     # latitude = request.form['latitude']
 
     # default values for Austin
-    latitude = 30.2672
-    longitude = 97.7431
+    # latitude = 30.2672
+    # longitude = 97.7431
+
+    metro_area = request.form['metro_area']
+    latitude = metro_coord_mapping[metro_area][0]
+    longitude = metro_coord_mapping[metro_area][1]
 
     minimum_nights = int(request.form['minimum_nights'])
     maximum_nights = int(request.form['maximum_nights'])
@@ -70,7 +99,7 @@ def predict():
     instant_bookable = request.form['instant_bookable']
     cancellation_policy = request.form['cancellation_policy']
 
-    print('OK')
+    print("model inputs: ", metro_area, latitude, longitude)
 
     # X_row = pd.DataFrame([[minimum_nights,  bathrooms, transit_len, maximum_nights, accommodates, property_type, room_type, instant_bookable, bed_type, cancellation_policy, bedrooms, beds, ]], columns=[
     #     'minimum_nights', 'bathrooms', 'transit_len', 'maximum_nights', 'accommodates', 'room_type', 'instant_bookable', 'bed_type', 'cancellation_policy', 'bedrooms', 'beds'])
