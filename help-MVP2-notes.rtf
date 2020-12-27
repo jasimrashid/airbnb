@@ -3,15 +3,13 @@
 {\colortbl;\red255\green255\blue255;\red36\green255\blue255;\red255\green255\blue11;\red19\green19\blue19;
 \red139\green255\blue8;\red141\green0\blue2;\red129\green255\blue255;\red251\green0\blue7;\red19\green19\blue19;
 \red0\green0\blue0;\red253\green139\blue9;\red251\green0\blue7;\red255\green255\blue96;\red98\green0\blue152;
-\red131\green129\blue4;\red251\green0\blue255;\red133\green80\blue3;\red34\green255\blue172;\red98\green0\blue152;
-\red131\green129\blue4;\red18\green111\blue167;\red18\green111\blue167;\red85\green136\blue3;\red145\green0\blue147;
-}
+\red131\green129\blue4;\red251\green0\blue255;\red133\green80\blue3;\red34\green255\blue172;\red131\green129\blue4;
+\red18\green111\blue167;\red18\green111\blue167;\red85\green136\blue3;\red145\green0\blue147;}
 {\*\expandedcolortbl;;\cssrgb\c4983\c100000\c100000;\cssrgb\c100000\c100000\c0;\cssrgb\c9818\c9821\c9820;
 \cssrgb\c59955\c100000\c0;\cssrgb\c62986\c0\c0;\cssrgb\c56043\c100000\c100000;\cssrgb\c100000\c12195\c0;\cssrgb\c9818\c9821\c9820;
 \cssrgb\c0\c1\c1;\cssrgb\c100000\c61656\c0;\cssrgb\c100000\c12195\c0;\cssrgb\c100000\c100000\c44919;\cssrgb\c46715\c5470\c66149;
-\cssrgb\c58334\c56884\c0;\cssrgb\c100000\c7248\c100000;\cssrgb\c59784\c38775\c0;\cssrgb\c1226\c100000\c72995;\cssrgb\c46715\c5470\c66149;
-\cssrgb\c58334\c56884\c0;\cssrgb\c4205\c51291\c71506;\cssrgb\c4205\c51291\c71506;\cssrgb\c39979\c59107\c0;\cssrgb\c64494\c4644\c64494;
-}
+\cssrgb\c58334\c56884\c0;\cssrgb\c100000\c7248\c100000;\cssrgb\c59784\c38775\c0;\cssrgb\c1226\c100000\c72995;\cssrgb\c58334\c56884\c0;
+\cssrgb\c4205\c51291\c71506;\cssrgb\c4205\c51291\c71506;\cssrgb\c39979\c59107\c0;\cssrgb\c64494\c4644\c64494;}
 \margl1440\margr1440\vieww7640\viewh12160\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
@@ -250,9 +248,21 @@ fixing bug:\
 \cf9 Train Accuracy 0.9999730020564809\
 Test Accuracy 1.0 does not seem right\
 mae $134\
+\
+\
+Train Accuracy 0.9999404436975107\
+Test Accuracy 0.48448725173098806 does not seem right\
+mae $131\
+ran in 8.83 seconds\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf12 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf4 models are in sync b/w notebook and module.\
+fixed issue:\
+- order of columns in dataframe is important\
+- \cf12 \
 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf14 ** add to blog: \
 why are decision trees better? categorical variables have meaning an have significant impact. e.g. cancellation policy potentially impacts a customer\'92s decision. i pay a premium when i make tentative plans. higher fee for cancelable reservations. \
 \
@@ -282,38 +292,29 @@ substeps:
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\b0 \cf18 - aesthetic changes\
-- model accuracy\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-
-\f1\b \cf12 bug
-\f0\b0 \cf9 : lat & long does not appear to impact model\cf19 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf15 next: \
-test this out in ipynb. deploy changes in module\
-1. log into separate file form requests input values. 10 row sample.\
-2. parse them into ipynb. then run predictions from ipynb using thee input\
-\
+\cf15 \
 \cf18 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf20 \
+\cf19 \
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf21 nice to have:\
+\cf20 nice to have:\
 - lat and long provide best locational precision.\
 	but what is the best way to incprporate them into a form?\
 \
 	there has to be a library or an API that\'92s free. Otherwise, can I code my own?\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf22 - fast API\cf21 \
+\cf21 - fast API\cf20 \
 - give them a video preview of what i mean by excel eyeballing, pivoting, etc.\
 - super bonus!!! add map based locator!!!!\
+- \cf18 - model accuracy (some predictions don\'92t seem right)\cf20 \
 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf23 - re-run all notebooks and consolidate. then clean up folder structure\cf20 \
+\cf22 - re-run all notebooks and consolidate. then clean up folder structure\cf19 \
 \
 \cf0 \
 \
-\cf24 question:\cf0 \
+\cf23 question:\cf0 \
 - during preprocessing in normal stats, you remove outliers. when training with a tree-based model, do you do the same?\
 - excluding features like \'93host_\'94 prevents \'93leaking\'94?\
 \

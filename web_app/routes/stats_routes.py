@@ -27,30 +27,30 @@ stats_routes = Blueprint("stats_routes", __name__)
 # @stats_routes.route("/predict_form", methods=["POST"])
 # def predict_html():
 
-metro_coord_mapping = {'Austin': (30.2672, 97.7431),
-                       'Boston': (42.3601, 71.0589),
-                       'Broward': (26.1901, 80.3659),
-                       'Cambridge': (42.3736, 71.1097),
-                       'Chicago': (41.8781, 87.6298),
-                       'Twin Cities': (44.9375, 93.2010),
-                       'Clark CO': (36.0796, 115.0940),
-                       'Columbus': (39.9612, 82.9988),
-                       'Denver': (39.7392, 104.9903),
-                       'Hawaii': (19.8968, 155.5828),
-                       'Jersey City': (40.7178, 74.0431),
-                       'New York City': (40.7128, 74.0060),
-                       'Los Angeles': (34.0522, 118.2437),
-                       'Oakland': (37.8044, 122.2712),
-                       'Nashville': (36.1627, 86.7816),
-                       'New Orleans': (29.9511, 90.0715),
-                       'Santa Clara': (37.3541, 121.9552),
-                       'Portland': (45.5051, 122.6750),
-                       'Rhode Island': (41.5801, 71.4774),
-                       'Salem': (44.9429, 123.0351),
-                       'San Diego': (32.7157, 117.1611),
-                       'San Francisco': (37.7749, 122.4194),
-                       'Seattle': (47.6062, 122.3321),
-                       'Washington DC': (38.9072, 77.0369)}
+metro_coord_mapping = {'Austin': (30.2672, -97.7431),
+                       'Boston': (42.3601, -71.0589),
+                       'Broward': (26.1901, -80.3659),
+                       'Cambridge': (42.3736, -71.1097),
+                       'Chicago': (41.8781, -87.6298),
+                       'Twin Cities': (44.9375, -93.2010),
+                       'Clark CO': (36.0796, -115.0940),
+                       'Columbus': (39.9612, -82.9988),
+                       'Denver': (39.7392, -104.9903),
+                       'Hawaii': (19.8968, -155.5828),
+                       'Jersey City': (40.7178, -74.0431),
+                       'New York City': (40.7128, -74.0060),
+                       'Los Angeles': (34.0522, -118.2437),
+                       'Oakland': (37.8044, -122.2712),
+                       'Nashville': (36.1627, -86.7816),
+                       'New Orleans': (29.9511, -90.0715),
+                       'Santa Clara': (37.3541, -121.9552),
+                       'Portland': (45.5051, -122.6750),
+                       'Rhode Island': (41.5801, -71.4774),
+                       'Salem': (44.9429, -123.0351),
+                       'San Diego': (32.7157, -117.1611),
+                       'San Francisco': (37.7749, -122.4194),
+                       'Seattle': (47.6062, -122.3321),
+                       'Washington DC': (38.9072, -77.0369)}
 
 extData = {'user': 'joem@example.com', 'boy': 'good'}
 
@@ -58,8 +58,10 @@ extData = {'user': 'joem@example.com', 'boy': 'good'}
 def load_model():
     print("LOADING THE MODEL...")
     # filename = '/Users/jasimrashid/Projects/DS-Unit-4-Build-Week-4-Airbnb/linear_model_pipeline_v2.pkl'
+    # filename = os.path.join(os.path.dirname(__file__),
+    #                         "../..", "models", "decision_tree_model_fewer_features.pkl")
     filename = os.path.join(os.path.dirname(__file__),
-                            "../..", "models", "decision_tree_model_fewer_features.pkl")
+                            "../..", "models", "decision_tree_model-2.pkl")
     # breakpoint()
     with open(filename, 'rb') as model_file:
         loaded_model = pickle.load(model_file)
@@ -104,35 +106,29 @@ def predict():
 
     print("model inputs: ", metro_area, latitude, longitude)
 
-    x_train_row = {'latitude': latitude, 'longitude': longitude,
-                   'minimum_nights': minimum_nights, 'maximum_nights': maximum_nights, 'property_type': property_type,
-                   'room_type': room_type, 'bathrooms': bathrooms, 'accommodates': accommodates, 'bedrooms': bedrooms, 'beds': beds, 'bed_type': bed_type,
-                   'transit_len': transit_len, 'instant_bookable': instant_bookable, 'cancellation_policy': cancellation_policy}
-
     X_train_row = {
-        'minimum_nights': minimum_nights,
-        'transit_len': transit_len,
-        'room_type': room_type,
-        'accommodates': accommodates,
-        'longitude': longitude,
-        'bedrooms': bedrooms,
-        'instant_bookable': instant_bookable,
-        'beds': beds,
-        'bathrooms': bathrooms,
-        'maximum_nights': maximum_nights,
-        'cancellation_policy': cancellation_policy,
-        'bed_type': bed_type,
-        'latitude': latitude,
-        'property_type': property_type
+        'maximum_nights': [maximum_nights],
+        'room_type': [room_type],
+        'longitude': [longitude],
+        'cancellation_policy': [cancellation_policy],
+        'bed_type': [bed_type],
+        'transit_len': [transit_len],
+        'bedrooms': [bedrooms],
+        'minimum_nights': [minimum_nights],
+        'property_type': [property_type],
+        'latitude': [latitude],
+        'beds': [beds],
+        'bathrooms': [bathrooms],
+        'instant_bookable': [instant_bookable],
+        'accommodates': [accommodates]
     }
 
     # fmtStr = "%(minimum_nights)s, %(transit_len)s, %(room_type)s, %(accommodates)s, %(longitude)s, %(bedrooms)s, %(instant_bookable)s, %(beds)s, %(bathrooms)s, %(maximum_nights)s, %(cancellation_policy)s, %(bed_type)s, %(latitude)s, %(property_type)s"
     # logging.basicConfig(level=logging.DEBUG,filename="output.log",format=fmtStr)
     # logging.info("row: ", extra=X_train_row)
 
-    X_row = pd.DataFrame([[minimum_nights, transit_len, room_type, accommodates, longitude, bedrooms,
-                           instant_bookable, beds, bathrooms, maximum_nights, cancellation_policy, bed_type, latitude, property_type]], columns=[
-                         'minimum_nights', 'transit_len', 'room_type', 'accommodates', 'longitude', 'bedrooms', 'instant_bookable', 'beds', 'bathrooms', 'maximum_nights', 'cancellation_policy', 'bed_type', 'latitude', 'property_type'])
+    X_row = pd.DataFrame([[maximum_nights, room_type, longitude, cancellation_policy, bed_type, transit_len, bedrooms, minimum_nights, property_type, latitude, beds, bathrooms, instant_bookable, accommodates]], columns=[
+                         'maximum_nights', 'room_type', 'longitude', 'cancellation_policy', 'bed_type', 'transit_len', 'bedrooms', 'minimum_nights', 'property_type', 'latitude', 'beds', 'bathrooms', 'instant_bookable', 'accommodates'])
 
     print(X_train_row)
 
