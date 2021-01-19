@@ -15,7 +15,7 @@ Instead of Flask, we'll use FastAPI. It's similar, but faster, with automatic in
 
 You'll build and deploy a Data Science API. You'll work cross-functionally with your Web teammates to connect your API to a full-stack web app!
 
-![](https://user-images.githubusercontent.com/7278219/87967579-a4f16a00-ca84-11ea-9f90-886b3cf1a25c.png)
+![](/assets/arch_diagram_1.png)
 
 ## Tech stack
 - [FastAPI](https://fastapi.tiangolo.com/): Web framework. Like Flask, but faster, with automatic interactive docs.
