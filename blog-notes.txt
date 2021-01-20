@@ -11,3 +11,6 @@ why? it helps you coordinate with engineers and devops
 big3 - AWS, azure, GCS
 VPS
 PaaS(heroku)
+
+rob's blog: http://robdbennett.com/2020-07-25-build_3_airbnb_prices/
+david's git: https://github.com/DAVIDCRUZ0202/Airbnb_price_predictor
