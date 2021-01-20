@@ -3,20 +3,23 @@
 
 ![](/assets/arch_diagram_1.png)
 
-Flask App Heroku link: [https://ds-bw-test.herokuapp.com/](https://ds-bw-test.herokuapp.com/)
 
-This diagram shows two different ways to use frameworks like Flask. Both ways are good! The first way is what you learned in DS Unit 3. The second way is more common in Build Weeks & Labs. 
+INTRODUCTION
 
-![](https://user-images.githubusercontent.com/7278219/87967396-5a6fed80-ca84-11ea-902a-890cfa6115d3.png)
+I've been an avid user of Airbnb since 2013. So I wanted to understand how Airbnb rental rates vary in the United States and what factors affect its prices. Although Airbnb does not expose its data through an API, there are commerical and non-commercial websites that scrape data and publish it for public use.
 
-Instead of Flask, we'll use FastAPI. It's similar`, but faster, with automatic interactive docs. For more comparison, see [FastAPI for Flask Users](https://amitness.com/2020/06/fastapi-vs-flask/).
+For my analysis I used [insiderairbnb.com's](http://insideairbnb.com/about.html) [1] datasets as a starting point. This website collects city-wide data from across the world, including more than a dozen U.S. metropolitain regions.
+
+I also built a prediction tool that gives an estimate of an optimum price, based on the most important features. This prediction is based on a Random Forest regression model and trained on insiderairbnb's datasets. Finally, I hosted the prediction on AWS Heroku servers via a Flask web application and FastAPI.
+
+
+[FastAPI for Flask Users](https://amitness.com/2020/06/fastapi-vs-flask/).
 
 You'll build and deploy a Data Science API. You'll work cross-functionally with your Web teammates to connect your API to a full-stack web app!
 
+Flask App Heroku link: [https://ds-bw-test.herokuapp.com/](https://ds-bw-test.herokuapp.com/)
 
 
-=======
-![](/assets/arch_diagram_1.png)
 
 
 ## Tech stack
@@ -263,6 +266,7 @@ git push heroku master
 # or... git push heroku my_branch:master
 ```
 
+Notes & Sources
 
 
-
+- Build week [team](https://buildweek.netlify.app/index.html)
