@@ -15,6 +15,10 @@ You'll build and deploy a Data Science API. You'll work cross-functionally with 
 
 
 
+=======
+![](/assets/arch_diagram_1.png)
+
+
 ## Tech stack
 - [FastAPI](https://fastapi.tiangolo.com/): Web framework. Like Flask, but faster, with automatic interactive docs.
 - [Flake8](https://flake8.pycqa.org/en/latest/): Linter, enforces PEP8 style guide.
