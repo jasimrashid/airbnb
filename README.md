@@ -19,15 +19,10 @@ The prediction can be accessed in this [heroku link](https://calm-plains-09823.h
 Here is an example of the end product
 MODEL DEVELOPMENT
 
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
-```
 
 1. Pre-processing
+
+     * hello
 
 2. Training the model
 
