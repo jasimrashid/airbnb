@@ -14,7 +14,7 @@ I also built a prediction tool that gives an estimate of an optimum price, based
 
 The prediction can be accessed in this [heroku link](https://calm-plains-09823.herokuapp.com/)
 
-![](/assets/prediction_form.png)
+![](/assets/prediction_form_1.png)
 
 Here is an example of the end product
 MODEL DEVELOPMENT
