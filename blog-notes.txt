@@ -12,5 +12,13 @@ big3 - AWS, azure, GCS
 VPS
 PaaS(heroku)
 
+heroku:
+https://calm-plains-09823.herokuapp.com/
+
+
 rob's blog: http://robdbennett.com/2020-07-25-build_3_airbnb_prices/
 david's git: https://github.com/DAVIDCRUZ0202/Airbnb_price_predictor
+
+
+team page: https://github.com/jasimrashid/Labs27-A-Bridges_to_Prosperity-FE/tree/main
+

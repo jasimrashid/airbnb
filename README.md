@@ -12,6 +12,22 @@ For my analysis I used [insiderairbnb.com's](http://insideairbnb.com/about.html)
 
 I also built a prediction tool that gives an estimate of an optimum price, based on the most important features. This prediction is based on a Random Forest regression model and trained on insiderairbnb's datasets. Finally, I hosted the prediction on AWS Heroku servers via a Flask web application and FastAPI.
 
+The prediction can be accessed in this [heroku link](https://calm-plains-09823.herokuapp.com/)
+
+![](/assets/prediction_form.png)
+
+Here is an example of the end product
+MODEL DEVELOPMENT
+
+1. Pre-processing
+
+2. Training the model
+
+
+3. Limitations
+- seasonality; not based on time-series estimates
+- supply and demand
+
 
 [FastAPI for Flask Users](https://amitness.com/2020/06/fastapi-vs-flask/).
 
