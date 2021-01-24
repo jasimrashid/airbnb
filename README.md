@@ -22,7 +22,7 @@ MODEL DEVELOPMENT
 
 1. Pre-processing yo what the fuck!! 
 
-* hello
+    * hello
 
 2. Training the model
 
