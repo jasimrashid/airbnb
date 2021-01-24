@@ -61,6 +61,34 @@ Training the model
 > ```
 
 2. Wrangle data and select features
+``` 
+target = ['price']
+
+features = ['host_response_time','host_response_rate','host_acceptance_rate',
+'street','neighbourhood','neighbourhood_cleansed','neighbourhood_group_cleansed','city','state','zipcode','market','smart_location','latitude','longitude','property_type','room_type','accommodates','bathrooms','bedrooms','beds','bed_type','amenities','square_feet','minimum_nights','maximum_nights','instant_bookable','is_business_travel_ready','cancellation_policy','require_guest_profile_picture','require_guest_phone_verification','notes_len','transit_len','access_len','interaction_len','house_rules_len','host_about_len','metro_area','bedrooms_str','beds_str']
+
+# Wrangle and pre-process
+
+# Removing sparse features from features (sparse features are <90% populated)
+sparse_features = ['square_feet','neighbourhood_group_cleansed','host_response_rate','host_response_time','neighbourhood','host_acceptance_rate']
+
+unusable_features = ['amenities']
+
+duplicative_location_features = ['street','neighbourhood','neighbourhood_cleansed','neighbourhood_group_cleansed','city','state','zipcode','market','smart_location','metro_area']
+
+numeric_columns = df.dtypes[df.dtypes==int].index.tolist()
+nonnumeric_columns = df.dtypes[df.dtypes==object].index.tolist()
+
+df[nonnumeric_columns] = df[nonnumeric_columns].astype(str)
+
+selected_features = list(set(features) - set(sparse_features))
+selected_features = list(set(selected_features) - set(unusable_features))
+selected_features = list(set(selected_features) - set(duplicative_location_features))
+
+df = df[target + selected_features]
+
+df.dropna(inplace=True)
+```
 
 
 
