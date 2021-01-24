@@ -22,7 +22,7 @@ MODEL DEVELOPMENT
 
 1. Model Development
     * Pre-processing & exploratory data analysis
-    * Train model
+    * Training the model
 
 2. Model Deployment
     * Option A: Via Fast API
@@ -50,9 +50,17 @@ Jupyter Notebook: [airbnb_eda_cycle_1.ipynb](notebooks/airbnb_eda_cycle_1.ipynb)
 2. Explore data (examine distribution of data using boxplots and histograms)
 3. Custom labeling: Classify all cities into 17 "metro area" categories
 
-Some charts:
+Exploratory data analysis - Charts:
 ![](/assets/eda_1.png)
 
+Training the model
+
+1. Split the data into training and test sets
+> ```
+> X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=.2, random_state=42)
+> ```
+
+2. Wrangle data and select features
 
 
 
