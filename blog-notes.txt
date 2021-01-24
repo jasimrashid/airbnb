@@ -22,3 +22,13 @@ david's git: https://github.com/DAVIDCRUZ0202/Airbnb_price_predictor
 
 team page: https://github.com/jasimrashid/Labs27-A-Bridges_to_Prosperity-FE/tree/main
 
+DELETE
+
+steps
+1. Clean errors in populated values
+2. Explore data (examine distribution of data using boxplots and histograms)
+3. Custom labeling: Classify all cities into 17 "metro area" categories
+
+Train model
+1. data wrangling: s
+

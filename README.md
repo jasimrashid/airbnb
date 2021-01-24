@@ -20,14 +20,16 @@ Here is an example of the end product
 MODEL DEVELOPMENT
 
 
-1. Pre-processing yo what the fuck!! 
+1. Model Development
+    * Pre-processing & exploratory data analysis
+    * Train model
 
-    * hello
+2. Model Deployment
+    * Option A: Via Fast API
+    * Option B: Via Heroku
 
-2. Training the model
-
-
-3. Limitations
+3. Conclusion
+    * Limitations
 - seasonality; not based on time-series estimates
 - supply and demand
 
@@ -37,6 +39,19 @@ MODEL DEVELOPMENT
 You'll build and deploy a Data Science API. You'll work cross-functionally with your Web teammates to connect your API to a full-stack web app!
 
 Flask App Heroku link: [https://ds-bw-test.herokuapp.com/](https://ds-bw-test.herokuapp.com/)
+
+## Model Development
+
+### Pre-processing
+
+Jupyter Notebook: [airbnb_eda_cycle_1.ipynb](notebooks/airbnb_eda_cycle_1.ipynb)
+
+1. Clean errors in populated values
+2. Explore data (examine distribution of data using boxplots and histograms)
+3. Custom labeling: Classify all cities into 17 "metro area" categories
+
+Some charts:
+![](/assets/eda_1.png)
 
 
 
@@ -289,3 +304,9 @@ Notes & Sources
 
 
 - Build week [team](https://buildweek.netlify.app/index.html)
+
+
+
+    * Limitations
+- seasonality; not based on time-series estimates
+- supply and demand
