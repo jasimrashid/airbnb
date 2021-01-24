@@ -20,7 +20,9 @@ Here is an example of the end product
 MODEL DEVELOPMENT
 
 
-1. Pre-processing yo what the fuck!! hello
+1. Pre-processing yo what the fuck!! 
+
+* hello
 
 2. Training the model
 
