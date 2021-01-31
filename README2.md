@@ -1,3 +1,75 @@
+
+
+## Tech stack
+- [FastAPI](https://fastapi.tiangolo.com/): Web framework. Like Flask, but faster, with automatic interactive docs.
+- [Flake8](https://flake8.pycqa.org/en/latest/): Linter, enforces PEP8 style guide.
+- [Heroku](https://devcenter.heroku.com/): Platform as a service, hosts your API.
+- [Pipenv](https://pipenv.pypa.io/en/latest/): Reproducible virtual environment, manages dependencies.
+- [Plotly](https://plotly.com/python/): Visualization library, for Python & JavaScript.
+- [Pytest](https://docs.pytest.org/en/stable/): Testing framework, runs your unit tests.
+
+## Getting started
+
+[Create a new repository from this template.](https://github.com/Lambda-School-Labs/ds-bw/generate)
+
+
+## More instructions
+
+Activate the virtual environment
+```
+pipenv shell
+```
+
+Install additional packages
+```
+pipenv install PYPI-PACKAGE-NAME
+```
+
+Launch a Jupyter notebook
+```
+jupyter notebook
+```
+
+Run tests
+```
+pytest
+```
+
+Run linter
+```
+flake8
+```
+
+[calmcode.io videos - flake8](https://calmcode.io/flake8/introduction.html)
+
+## Deploying to Heroku
+
+Prepare Heroku
+```
+heroku login
+
+heroku create YOUR-APP-NAME-GOES-HERE
+
+heroku git:remote -a YOUR-APP-NAME-GOES-HERE
+```
+
+Deploy to Heroku
+```
+git add --all
+
+git commit -m "Deploy to Heroku"
+
+git push heroku main:master
+
+heroku open
+```
+
+Deactivate the virtual environment
+```
+exit
+```
+
+
 Clone the repo
 ```
 git clone https://github.com/jasimrashid/airbnb.git

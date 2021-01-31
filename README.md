@@ -4,21 +4,20 @@
 ![](/assets/arch_diagram_1.png)
 
 
-INTRODUCTION
+**INTRODUCTION**
 
 I've been an avid user of Airbnb since 2013. So I wanted to understand how Airbnb rental rates vary in the United States and what factors affect its prices. Although Airbnb does not expose its data through an API, there are commerical and non-commercial websites that scrape data and publish it for public use.
 
 For my analysis I used [insiderairbnb.com's](http://insideairbnb.com/about.html) [1] datasets as a starting point. This website collects city-wide data from across the world, including more than a dozen U.S. metropolitain regions.
 
-I also built a prediction tool that gives an estimate of an optimum price, based on the most important features. This prediction is based on a Random Forest regression model and trained on insiderairbnb's datasets. Finally, I hosted the prediction on AWS Heroku servers via a Flask web application and FastAPI.
+I also built a prediction tool that gives an estimate of an optimum price, based on the most important features. We trained various models on insiderairbnb's dataset, after which we determined that the **Random Forest regression model** was the best fit [2]. Finally, I hosted a prediction model through a Flask web application and FastAPI.
 
-The prediction can be accessed in this [heroku link](https://calm-plains-09823.herokuapp.com/)
+The prediction tool (as previewed below) can be accessed through this [heroku link](https://calm-plains-09823.herokuapp.com/)
 
 ![](/assets/prediction_form_2.png)
 
-Here is an example of the end product
-MODEL DEVELOPMENT
 
+**MY PROCESS**
 
 1. Model Development
     * Pre-processing & exploratory data analysis
@@ -42,7 +41,7 @@ Flask App Heroku link: [https://ds-bw-test.herokuapp.com/](https://ds-bw-test.he
 
 ## Model Development
 
-### Pre-processing
+**Pre-processing**
 
 Jupyter Notebook: [airbnb_eda_cycle_1.ipynb](notebooks/airbnb_eda_cycle_1.ipynb)
 
@@ -50,10 +49,10 @@ Jupyter Notebook: [airbnb_eda_cycle_1.ipynb](notebooks/airbnb_eda_cycle_1.ipynb)
 2. Explore data (examine distribution of data using boxplots and histograms)
 3. Custom labeling: Classify all cities into 17 "metro area" categories
 
-Exploratory data analysis - Charts:
+**Exploratory data analysis - Charts**
 ![](/assets/eda_1.png)
 
-Training the model
+### Training the model
 
 1. Split the data into training and test sets
 ```
@@ -89,17 +88,15 @@ df = df[target + selected_features]
 
 df.dropna(inplace=True)
 ```
-3. "Fit" the training set to models & choose model and parameters that has the "best" most optimal error metric
+3. "Fit" the training set to models & choose model and parameters that has the "best" most optimal error metric.
 ```
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 mae = mean_absolute_error(y_test, y_pred)
 ```
 
-table showing MAE for various models
+**Mean Absolute Error(MAE) for various models**
 
-| Model          | Mean Absolute Error | xxxx     |
-|:---            |                  | 123      |
 
 | Model      | Mean Absolute Error | Size of Model     |
 | :---        |    :----:   |          ---: |
@@ -110,9 +107,9 @@ table showing MAE for various models
 | Decision Tree   | 134        | 20MB      |
 | Random Forest   | 105        | >20MB      |
 
-The best model has a low MAE but is also less likely to overfit/underfit outside the training set (mean-variance tradeoff) [1]. For the prediction tool, we'll choose a linear model because of its optimal size.
+The best model should optimize for MAE but not "overfit" on the training dataset. This increases the chance that the model will generalize well on  to not overfit/underfit outside the training set (e.g. in "tomorrow's" test data)(bias-variance tradeoff) [3]. For the prediction tool, we'll choose a linear model because of its optimal size.
 
-4. save chosen model as a pickle file
+4. Save chosen model as a pickle file
 
 ```
 # Save pipeline 
